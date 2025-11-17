@@ -1,12 +1,12 @@
 {
   "scripts": {
-    "deploy": "echo \"Use yarn run deploy-dev or yarn run deploy-prod instead\"",
-    "deploy-dev": "yarn run predeploy && serverless deploy && yarn run postdeploy",
-    "deploy-prod": "cross-env STAGE=prod yarn run deploy-dev",
-    "predeploy": "tsc lib/env.ts lib/config.ts",
-    "postdeploy": "rimraf lib/env.js lib/config.js",
-    "lint": "tsc --strict --noEmit && eslint \"**/*.ts\"",
-    "test": "jest"
+    "deploy": "echo \"Use bun run deploy-dev or bun run deploy-prod instead\"",
+    "deploy-dev": "bun run predeploy && bunx serverless deploy && bun run postdeploy",
+    "deploy-prod": "cross-env STAGE=prod bun run deploy-dev",
+    "predeploy": "bunx tsc lib/env.ts lib/config.ts",
+    "postdeploy": "bunx rimraf lib/env.js lib/config.js",
+    "lint": "bunx tsc --strict --noEmit && bunx eslint \"**/*.ts\"",
+    "test": "bunx jest"
   },
   "dependencies": {
     "aws-sdk": "^2.1692.0",
