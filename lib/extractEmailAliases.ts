@@ -7,7 +7,9 @@ import { operationalDomain } from "./env";
  * in the email belonging to user's verified domain.
  */
 export default (parsed: ParsedMail): Array<string> => {
-  const recipients = parsed.to.value.concat(parsed.cc ? parsed.cc.value : []);
+  const toRecipients = parsed.to?.value ?? [];
+  const ccRecipients = parsed.cc?.value ?? [];
+  const recipients = toRecipients.concat(ccRecipients);
 
   return recipients
     .filter(emailObject => emailObject.address !== undefined)
