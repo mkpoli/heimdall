@@ -3,9 +3,9 @@
     "deploy": "echo \"Use bun run deploy-dev or bun run deploy-prod instead\"",
     "deploy-dev": "bun run predeploy && bunx serverless deploy && bun run postdeploy",
     "deploy-prod": "cross-env STAGE=prod bun run deploy-dev",
-    "predeploy": "bunx tsc lib/env.ts lib/config.ts",
+    "predeploy": "tsrs --ignoreConfig --module commonjs --target es2022 --types node lib/env.ts lib/config.ts",
     "postdeploy": "bunx rimraf lib/env.js lib/config.js",
-    "lint": "bunx tsc --strict --noEmit && bunx eslint \"**/*.ts\"",
+    "lint": "tsrs --strict --noEmit && bunx eslint \"**/*.ts\"",
     "test": "bunx jest"
   },
   "dependencies": {
@@ -40,6 +40,7 @@
     "prettier": "^2.8.8",
     "rimraf": "^3.0.2",
     "serverless-plugin-typescript": "^2.1.5",
+    "tsrs": "0.20.1-ts7.1.0-beta",
     "typescript": "^4.9.5"
   }
 }

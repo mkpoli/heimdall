@@ -36,7 +36,9 @@ export default async (parsedMail: ParsedMail): Promise<void> => {
           },
           to: [email],
           subject: parsedMail.subject,
-          text: `Error generating alias: ${e.message}`
+          text: `Error generating alias: ${
+            e instanceof Error ? e.message : String(e)
+          }`
         },
         parsedMail
       )
