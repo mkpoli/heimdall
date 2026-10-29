@@ -24,15 +24,17 @@ export default class MockAlias implements AliasData {
     this.lastSentDate = options.lastSentDate;
   }
 
-  static generateAlias = jest.fn(async ({ description }: string) => {
-    return new MockAlias({
-      value: "randomlygeneratedaliasvalue",
-      description,
-      creationDate: now,
-      countReceived: 0,
-      countSent: 0
-    });
-  });
+  static generateAlias = jest.fn(
+    async ({ description }: { description: string }) => {
+      return new MockAlias({
+        value: "randomlygeneratedaliasvalue",
+        description,
+        creationDate: now,
+        countReceived: 0,
+        countSent: 0
+      });
+    }
+  );
 
   static getAlias = jest.fn(async (aliasValue: string) => {
     if (aliasValue === INVALID_ALIAS) {
