@@ -137,4 +137,4 @@ Note: You need to update your DNS records for `test.yourverifieddomain.com` as y
 
 ## Migration
 
-To run migration scripts, first compile using `tsc scripts/migrate_vX.ts`, then run using `node scripts/migrate_vX.js`.
+To run migration scripts, first compile using `bunx tsrs --ignoreConfig --module commonjs --target es2022 --types node scripts/migrate_vX.ts`, then run using `node scripts/migrate_vX.js`.
